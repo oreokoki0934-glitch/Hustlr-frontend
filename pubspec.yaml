@@ -1,11 +1,10 @@
 name: hustlr_frontend
-description: "A new Flutter project."
-publish_to: 'none'
-
+description: "Hustlr login app"
+publish_to: 'none' # private package
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.10.8
+  sdk: ">=3.10.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -19,6 +18,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
   assets:
     - assets/Hustlr.png

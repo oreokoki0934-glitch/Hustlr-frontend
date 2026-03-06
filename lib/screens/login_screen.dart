@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
               // Logo
               Image.asset(
                 'assets/Hustlr.png',
-                height: 120, // adjust as needed
+                height: 120, 
               ),
               const SizedBox(height: 40),
 
