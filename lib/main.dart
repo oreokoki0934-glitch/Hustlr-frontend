@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'theme.dart';
+import 'screens/splash_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/welcome_screen.dart';
+import 'screens/signup_screen.dart';
 
 void main() {
   runApp(const HustlrApp());
@@ -16,10 +18,15 @@ class HustlrApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Hustlr',
       theme: appTheme,
+
+      // App starts with the logo screen
       initialRoute: '/',
+
       routes: {
-        '/': (context) => const LoginScreen(),
+        '/': (context) => const SplashScreen(),
         '/welcome': (context) => const WelcomeScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/signup': (context) => const SignupScreen(),
       },
     );
   }
