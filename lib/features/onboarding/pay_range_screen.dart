@@ -33,7 +33,7 @@ class _PayRangeScreenState extends State<PayRangeScreen> {
 
             Text(
               "₦${value.toInt()}",
-              style: const TextStyle(
+              style: TextStyle(
                   fontSize: 28, fontWeight: FontWeight.bold),
             ),
 

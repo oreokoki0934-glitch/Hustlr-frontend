@@ -41,16 +41,24 @@ class IntroScreen extends StatelessWidget {
 
             const Spacer(),
 
-            Container(
-              height: 55,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: AppColors.primary.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(14),
-              ),
-              alignment: Alignment.center,
-              child: const Text("Start", style: TextStyle(color: Colors.white)),
-            ),
+            GestureDetector(
+  onTap: () {
+    Navigator.pushNamed(context, AppRoutes.skills);
+  },
+  child: Container(
+    height: 55,
+    width: double.infinity,
+    decoration: BoxDecoration(
+      color: AppColors.primary,
+      borderRadius: BorderRadius.circular(14),
+    ),
+    alignment: Alignment.center,
+    child: const Text(
+      "Start",
+      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+    ),
+  ),
+),
 
             const SizedBox(height: 30),
           ],

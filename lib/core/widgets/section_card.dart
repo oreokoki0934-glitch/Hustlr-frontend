@@ -46,9 +46,9 @@ class SectionCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(title,
-                          style: const TextStyle(fontWeight: FontWeight.w600)),
+                          style: TextStyle(fontWeight: FontWeight.w600)),
                       Text(subtitle,
-                          style: const TextStyle(color: Colors.grey)),
+                          style: TextStyle(color: Colors.grey)),
                     ],
                   ),
                 ),

@@ -62,7 +62,7 @@ class LoginScreen extends StatelessWidget {
               CustomButton(
                 text: "Login",
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, AppRoutes.home);
+                  Navigator.pushReplacementNamed(context, AppRoutes.done);
                 },
               ),
 
@@ -71,7 +71,7 @@ class LoginScreen extends StatelessWidget {
               Center(
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, AppRoutes.signup);
+                    Navigator.pushNamed(context, AppRoutes.role);
                   },
                   child: const Text("Create Account"),
                 ),
