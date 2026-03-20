@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants/colors.dart';
+import '../constants/dimensions.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hint;
@@ -13,20 +14,21 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final w = AppSizes.width(context);
+
     return TextField(
       obscureText: isPassword,
-      style: const TextStyle(fontSize: 16),
+      style: TextStyle(fontSize: AppSizes.fontMedium(context)),
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: const TextStyle(fontSize: 15),
         filled: true,
         fillColor: AppColors.inputFill,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 18,
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: w * 0.04,
+          vertical: w * 0.045,
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(w * 0.04),
           borderSide: BorderSide.none,
         ),
       ),

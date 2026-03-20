@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/colors.dart';
+import '../../../core/constants/dimensions.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/custom_textfield.dart';
 import '../../../routes/app_routes.dart';
@@ -9,68 +10,74 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final w = AppSizes.width(context);
+    final h = AppSizes.height(context);
+
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: w * 0.05),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
 
-            const SizedBox(height: 60),
+              SizedBox(height: h * 0.1),
 
-            const Text(
-              "Welcome Back",
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.w700,
+              Text(
+                "Welcome Back",
+                style: TextStyle(
+                  fontSize: AppSizes.fontLarge(context),
+                  fontWeight: FontWeight.w700,
+                ),
               ),
-            ),
 
-            const SizedBox(height: 8),
+              SizedBox(height: h * 0.01),
 
-            const Text(
-              "Login to your account",
-              style: TextStyle(color: AppColors.textSecondary),
-            ),
-
-            const SizedBox(height: 40),
-
-            const CustomTextField(hint: "Email"),
-            const SizedBox(height: 16),
-            const CustomTextField(hint: "Password", isPassword: true),
-
-            const SizedBox(height: 12),
-
-            Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                "Forgot Password?",
-                style: TextStyle(color: AppColors.primary),
+              const Text(
+                "Login to your account",
+                style: TextStyle(color: AppColors.textSecondary),
               ),
-            ),
 
-            const SizedBox(height: 30),
+              SizedBox(height: h * 0.05),
 
-            CustomButton(
-              text: "Login",
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, AppRoutes.home);
-              },
-            ),
+              const CustomTextField(hint: "Email"),
+              SizedBox(height: h * 0.02),
+              const CustomTextField(hint: "Password", isPassword: true),
 
-            const Spacer(),
+              SizedBox(height: h * 0.015),
 
-            Center(
-              child: TextButton(
+              Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  "Forgot Password?",
+                  style: TextStyle(
+                    color: AppColors.primary,
+                    fontSize: AppSizes.fontSmall(context),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: h * 0.04),
+
+              CustomButton(
+                text: "Login",
                 onPressed: () {
-                  Navigator.pushNamed(context, AppRoutes.signup);
+                  Navigator.pushReplacementNamed(context, AppRoutes.home);
                 },
-                child: const Text("Create Account"),
               ),
-            ),
 
-            const SizedBox(height: 20),
-          ],
+              SizedBox(height: h * 0.05),
+
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.signup);
+                  },
+                  child: const Text("Create Account"),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

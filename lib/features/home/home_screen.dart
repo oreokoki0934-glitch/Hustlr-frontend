@@ -1,128 +1,125 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/colors.dart';
+import '../../../core/constants/dimensions.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final w = AppSizes.width(context);
+    final h = AppSizes.height(context);
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: w * 0.05),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              const SizedBox(height: 10),
+              SizedBox(height: h * 0.02),
 
-              // 🔝 Header
+              // Header
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "Hello, Adeola 👋",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: AppSizes.fontMedium(context),
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 4),
-                      Text(
+                      SizedBox(height: h * 0.005),
+                      const Text(
                         "Welcome back",
-                        style: TextStyle(
-                          color: AppColors.textSecondary,
-                        ),
+                        style: TextStyle(color: AppColors.textSecondary),
                       ),
                     ],
                   ),
-
-                  CircleAvatar(
-                    radius: 22,
-                    backgroundColor: Colors.grey.shade300,
-                  )
+                  CircleAvatar(radius: w * 0.06),
                 ],
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: h * 0.03),
 
-              // 💰 Balance Card
+              // Balance Card
               Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(20),
+                padding: EdgeInsets.all(w * 0.05),
                 decoration: BoxDecoration(
                   color: AppColors.primary,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(w * 0.05),
                 ),
-                child: const Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Total Balance",
                       style: TextStyle(color: Colors.white70),
                     ),
-                    SizedBox(height: 8),
+                    SizedBox(height: h * 0.01),
                     Text(
                       "₦245,000",
                       style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
+                        fontSize: AppSizes.fontLarge(context),
                         color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: h * 0.03),
 
-              // ⚡ Quick Actions
-              const Text(
+              // Actions
+              Text(
                 "Quick Actions",
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: AppSizes.fontMedium(context),
                   fontWeight: FontWeight.w600,
                 ),
               ),
 
-              const SizedBox(height: 12),
+              SizedBox(height: h * 0.015),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _actionItem(Icons.send, "Send"),
-                  _actionItem(Icons.account_balance_wallet, "Wallet"),
-                  _actionItem(Icons.receipt, "Bills"),
-                  _actionItem(Icons.more_horiz, "More"),
+                  _action(context, Icons.send, "Send"),
+                  _action(context, Icons.wallet, "Wallet"),
+                  _action(context, Icons.receipt, "Bills"),
+                  _action(context, Icons.more_horiz, "More"),
                 ],
               ),
 
-              const SizedBox(height: 30),
+              SizedBox(height: h * 0.03),
 
-              // 📊 Transactions
-              const Text(
+              // Transactions
+              Text(
                 "Recent Transactions",
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: AppSizes.fontMedium(context),
                   fontWeight: FontWeight.w600,
                 ),
               ),
 
-              const SizedBox(height: 12),
+              SizedBox(height: h * 0.015),
 
               Expanded(
                 child: ListView(
-                  children: const [
-                    _transactionItem("Transfer", "-₦20,000", true),
-                    _transactionItem("Salary", "+₦150,000", false),
-                    _transactionItem("Airtime", "-₦5,000", true),
+                  children: [
+                    _transaction(context, "Transfer", "-₦20,000", true),
+                    _transaction(context, "Salary", "+₦150,000", false),
+                    _transaction(context, "Airtime", "-₦5,000", true),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -130,38 +127,32 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // 🔘 Action Button
-  Widget _actionItem(IconData icon, String label) {
+  Widget _action(BuildContext context, IconData icon, String label) {
+    final w = AppSizes.width(context);
+
     return Column(
       children: [
         Container(
-          height: 56,
-          width: 56,
+          height: w * 0.14,
+          width: w * 0.14,
           decoration: BoxDecoration(
             color: const Color(0xFFF5F6FA),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(w * 0.04),
           ),
           child: Icon(icon, color: AppColors.primary),
         ),
-        const SizedBox(height: 6),
-        Text(label, style: const TextStyle(fontSize: 12)),
+        SizedBox(height: w * 0.02),
+        Text(label, style: TextStyle(fontSize: w * 0.03)),
       ],
     );
   }
-}
 
-// 💳 Transaction Widget
-class _transactionItem extends StatelessWidget {
-  final String title;
-  final String amount;
-  final bool isDebit;
+  Widget _transaction(
+      BuildContext context, String title, String amount, bool isDebit) {
+    final w = AppSizes.width(context);
 
-  const _transactionItem(this.title, this.amount, this.isDebit);
-
-  @override
-  Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: const EdgeInsets.symmetric(vertical: 6),
+      contentPadding: EdgeInsets.symmetric(vertical: w * 0.015),
       leading: CircleAvatar(
         backgroundColor: const Color(0xFFF5F6FA),
         child: Icon(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/colors.dart';
+import '../../../core/constants/dimensions.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../routes/app_routes.dart';
 
@@ -8,34 +9,38 @@ class OnboardingScreen2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final w = AppSizes.width(context);
+    final h = AppSizes.height(context);
+
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: w * 0.05),
         child: Column(
           children: [
 
-            const SizedBox(height: 80),
+            SizedBox(height: h * 0.1),
 
             Container(
-              height: 280,
+              height: h * 0.35,
+              width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(w * 0.05),
               ),
             ),
 
-            const SizedBox(height: 40),
+            SizedBox(height: h * 0.05),
 
-            const Text(
+            Text(
               "Secure Payments",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 24,
+                fontSize: AppSizes.fontMedium(context),
                 fontWeight: FontWeight.w700,
               ),
             ),
 
-            const SizedBox(height: 12),
+            SizedBox(height: h * 0.015),
 
             const Text(
               "Fast and secure transactions anytime.",
@@ -52,7 +57,7 @@ class OnboardingScreen2 extends StatelessWidget {
               },
             ),
 
-            const SizedBox(height: 40),
+            SizedBox(height: h * 0.05),
           ],
         ),
       ),
