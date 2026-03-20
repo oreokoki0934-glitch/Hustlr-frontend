@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../constants/colors.dart';
-import '../constants/dimensions.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -14,23 +13,23 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final w = AppSizes.width(context);
-
     return SizedBox(
       width: double.infinity,
-      height: w * 0.14,
+      height: 55,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(w * 0.04),
+            borderRadius: BorderRadius.circular(14),
           ),
+          elevation: 0,
         ),
         onPressed: onPressed,
         child: Text(
           text,
-          style: TextStyle(
-            fontSize: AppSizes.fontMedium(context),
+          style: const TextStyle(
+            fontSize: 16,
+            color: Colors.white,
             fontWeight: FontWeight.w600,
           ),
         ),
